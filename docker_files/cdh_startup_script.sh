@@ -27,6 +27,9 @@ bash -c 'for x in `cd /etc/init.d ; ls impala-*` ; do sudo service $x start ; do
 service hbase-master start
 service hbase-thrift start
 
+echo "Starting SQOOP2 Server"
+service sqoop2-server start
+
 echo "Press Ctrl+P and Ctrl+Q to background this process."
 echo 'Use exec command to open a new bash instance for this instance (Eg. "docker exec -i -t CONTAINER_ID bash"). Container ID can be obtained using "docker ps" command.'
 echo "Start Terminal"

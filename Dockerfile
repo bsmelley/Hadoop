@@ -1,13 +1,11 @@
 # VERSION   0.1
 
-FROM ubuntu:14.04
+FROM ubuntu:15.04
 MAINTAINER Fernando Zavala <fernando@zavalasystems.com>
 
 # here we get the latest update packages and then we upgrade our system, and install JDK
-RUN apt-get update
-RUN apt-get upgrade -y \
-RUN apt-get dist-upgrade -y \
-RUN install openjdk-7-jdk -y
+RUN apt-get update && apt-get install -y openjdk-7-jdk 
+
 
 # Add MSSQL Server Driver for Hadoop
 ADD curl -L 'http://download.microsoft.com/download/0/2/A/02AAE597-3865-456C-AE7F-613F99F850A8/sqljdbc_4.0.2206.100_enu.tar.gz' | tar xz

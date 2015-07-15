@@ -1,15 +1,15 @@
 # VERSION   0.1
 
-FROM ubuntu:15.04
+FROM ubuntu:14.04
 MAINTAINER Fernando Zavala <fernando@zavalasystems.com>
 
 # here we get the latest update packages and then we upgrade our system, and install JDK
-RUN apt-get update && apt-get install -y openjdk-7-jdk 
+RUN apt-get update && apt-get install -y openjdk-7-jdk curl
 
 
 # Add MSSQL Server Driver for Hadoop
-ADD curl -L 'http://download.microsoft.com/download/0/2/A/02AAE597-3865-456C-AE7F-613F99F850A8/sqljdbc_4.0.2206.100_enu.tar.gz' | tar xz
-RUN cp sqljdbc_4.0/enu/sqljdbc4.jar /var/lib/sqoop/
+RUN curl -L 'http://download.microsoft.com/download/0/2/A/02AAE597-3865-456C-AE7F-613F99F850A8/sqljdbc_4.0.2206.100_enu.tar.gz' | tar xz
+
 
 ADD docker_files/cdh_installer.sh /tmp/cdh_installer.sh
 ADD docker_files/install_cloudera_repositories.sh /tmp/install_cloudera_repositories.sh
@@ -33,6 +33,10 @@ RUN \
     chmod +x /tmp/cdh_installer.sh && \
     chmod +x /usr/bin/cdh_startup_script.sh && \
     bash /tmp/cdh_installer.sh
+
+# Move sql driver to sqoop2 config location
+#COPY sqljdbc_4.0/enu/sqljdbc4.jar /var/lib/sqoop2/
+
 
 # private and public mapping
 EXPOSE 8020:8020

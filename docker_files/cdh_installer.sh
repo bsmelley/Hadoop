@@ -45,7 +45,7 @@ sudo -u hdfs hdfs dfs -chown hbase /hbase
 
 #CDH5-Installation-Guide Install HBase
 echo "Install Cloudera Components"
-DEBIAN_FRONTEND=noninteractive apt-get -y install hive hbase hbase-thrift hbase-master pig hue oozie oozie-client spark-core spark-master spark-worker spark-history-server spark-python sqoop2-client sqoop2-server
+DEBIAN_FRONTEND=noninteractive apt-get -y install hive hbase hbase-thrift hbase-master pig hue oozie oozie-client spark-core spark-master spark-worker spark-history-server spark-python
 
 #Configure Oozie
 update-alternatives --set oozie-tomcat-conf /etc/oozie/tomcat-conf.http
@@ -54,8 +54,7 @@ sudo oozie-setup sharelib create -fs hdfs://localhost -locallib /usr/lib/oozie/o
 #Initiate Oozie Database
 oozie-setup db create -run
 
-#Configure SQOOP2
-alternatives --set sqoop2-tomcat-conf /etc/sqoop2/tomcat-conf.dist
+
 
 #Create HUE Secret Key
 sed -i 's/secret_key=/secret_key=_S@s+D=h;B,s$C%k#H!dMjPmEsSaJR/g' /etc/hue/conf/hue.ini

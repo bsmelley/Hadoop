@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y openjdk-7-jdk curl
 
 
 # Add MSSQL Server Driver for Hadoop
-RUN curl -L 'http://download.microsoft.com/download/0/2/A/02AAE597-3865-456C-AE7F-613F99F850A8/sqljdbc_4.0.2206.100_enu.tar.gz' | tar xz
+#RUN curl -L 'http://download.microsoft.com/download/0/2/A/02AAE597-3865-456C-AE7F-613F99F850A8/sqljdbc_4.0.2206.100_enu.tar.gz' | tar xz
 
 
 ADD docker_files/cdh_installer.sh /tmp/cdh_installer.sh

@@ -1,1 +1,28 @@
 docker run -i -t -p 8020:8020 -p 8888:8888 -p 11000:11000 -p 11443:11443 -p 9090:9090 -p 8088:8088 -p 19888:19888  r0cketman/hadoop
+
+
+docker run --name admin \
+    --link zookeeper:zookeeper \
+    --link hsqldb:hsqldb \
+    --link redis:redis \
+    -d \
+    -P \
+    r0cketman/admin
+
+
+    docker run --name container1 \
+    --link zookeeper:zookeeper \
+    --link hsqldb:hsqldb \
+    --link redis:redis \
+    r0cketman/container
+
+    docker run --name shell -it r0cketman/shell
+
+    docker run --name container2 \
+    --link zookeeper:zookeeper \
+    --link hsqldb:hsqldb \
+    --link redis:redis \
+    r0cketman/container
+
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)

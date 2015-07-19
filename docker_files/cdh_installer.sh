@@ -50,7 +50,7 @@ DEBIAN_FRONTEND=noninteractive apt-get -y install hive hbase hbase-thrift hbase-
 #Configure Oozie
 update-alternatives --set oozie-tomcat-conf /etc/oozie/tomcat-conf.http
 sudo -u hdfs hadoop fs -chown oozie:oozie /user/oozie
-sudo oozie-setup sharelib create -fs hdfs://localhost -locallib /usr/lib/oozie/oozie-sharelib-yarn.tar.gz
+sudo oozie-setup sharelib create -fs hdfs://0.0.0.0 -locallib /usr/lib/oozie/oozie-sharelib-yarn.tar.gz
 #Initiate Oozie Database
 oozie-setup db create -run
 

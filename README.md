@@ -76,4 +76,4 @@ Apache Spark
 
 [Cloudera Documentation](http://www.cloudera.com/content/cloudera/en/documentation/core/latest/)
 
-#Please report any issue or feedback if possible.
+#Please report any issue or feedback if possible. 
